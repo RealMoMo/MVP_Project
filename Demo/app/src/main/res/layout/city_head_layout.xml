@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:background="@color/city_head_layout_background"
+              android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/city_head"
+        android:layout_marginLeft="@dimen/city_head_layout_marginLeft"
+        android:layout_marginTop="@dimen/city_head_layout_marginTop"
+        android:layout_marginBottom="@dimen/city_head_layout_marginBottom"
+        android:text="@string/city_head_letter_text"
+        android:textSize="@dimen/city_head_textSize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

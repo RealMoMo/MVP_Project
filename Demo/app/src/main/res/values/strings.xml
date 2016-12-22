@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">KanFang_Tuan</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="tv_home">首页</string>
+    <string name="tv_video">新帖</string>
+    <string name="tv_msg">关注</string>
+    <string name="tv_mine">我的</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--homefragment-->
+    <string name="homefragment_searchtext">区域/楼盘名/开发商</string>
+
+    <!--citychoice_activity-->
+    <string name="citychioce_titletext">选择城市</string>
+    <string name="citychioce_buttontext">取消</string>
+    <string name="citychioce_searchhinttext">中文/拼音/首字母</string>
+
+
+    <!--二维码页面-->
+    <string name="btn_scanQR_ma">扫一扫</string>
+    <string name="btn_createQR_ma">生成二维码</string>
+    <string name="et_hintTextQR_ma">请输入要生成二维码的字段</string>
+    <string name="btn_open_flashLight">开启闪光灯</string>
+    <string name="btn_close_flashLight">关闭闪光灯</string>
+    <string name="title_activity_home_detail">HomeDetailActivity</string>
+
+
+    <!--minefragment-->
+    <string name="minefragment_logintext">点击登录</string>
+    <string name="minefragment_qb">我的Q币</string>
+    <string name="minefragment_shoucang">我的收藏</string>
+    <string name="minefragment_tuangou">我的团购</string>
+    <string name="minefragment_kanfangtuan">我的看房团</string>
+    <string name="minefragment_tuijian">应用推荐</string>
+
+    <!--loginactivity-->
+    <string name="loginactivity_logintitletext">登录</string>
+    <string name="loginactivity_text">QQ快速登录</string>
+
+    <!--CityChoiceActivity-->
+    <!--city_head-->
+    <string name="city_head_letter_text">A</string>
+    <string name="citynametext">北京</string>
+    <string name="searchactivity_hintext">输入区域/楼盘名/开发商</string>
+</resources>

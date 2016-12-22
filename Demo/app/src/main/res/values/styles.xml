@@ -1,0 +1,138 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="CityChioceTheme" parent="AppTheme">
+        <!-- Customize your theme here. -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="LoginTheme" parent="AppTheme">
+        <!-- Customize your theme here. -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+    <!--videolistView中头像的风格-->
+    <style name="head_img_y">
+        <item name="android:padding">@dimen/dp_5</item>
+    </style>
+
+    <!--videoliseview中投稿人昵称-->
+    <style name="name_Y">
+        <item name="android:layout_marginTop">@dimen/dp_5</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textSize">@dimen/sp_12</item>
+        <item name="android:layout_marginLeft">@dimen/dp_5</item>
+    </style>
+
+    <!--videoliseview中投稿时间-->
+    <style name="time_Y">
+        <item name="android:textSize">@dimen/sp_9</item>
+        <item name="android:textColor">@color/video_time</item>
+        <item name="android:layout_marginBottom">@dimen/dp_3</item>
+        <item name="android:layout_marginLeft">@dimen/dp_5</item>
+    </style>
+
+    <!--videoliseview中视频标题-->
+    <style name="title_Y">
+        <item name="android:textSize">@dimen/sp_18</item>
+        <item name="android:layout_marginLeft">@dimen/dp_2</item>
+        <item name="android:layout_marginTop">@dimen/dp_3</item>
+        <item name="android:layout_marginBottom">@dimen/dp_3</item>
+    </style>
+    <!--视频中的文字，包括播放次数，视频时间长度-->
+    <style name="video_text">
+        <item name="android:textColor">@color/video_text_color</item>
+    </style>
+    <!--videoliseview中下面的数字-->
+    <style name="botton_number_Y">
+        <item name="android:layout_marginLeft">@dimen/dp_2</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginRight">@dimen/dp_5</item>
+    </style>
+    <!--videoliseview中下面的图标-->
+    <style name="botton_image_Y">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginLeft">@dimen/dp_5</item>
+        <item name="android:layout_marginRight">@dimen/dp_2</item>
+        <item name="android:layout_width">@dimen/dp_20</item>
+        <item name="android:layout_height">@dimen/dp_20</item>
+    </style>
+
+    <!--评论的评论人昵称-->
+    <style name="comment_naem_y">
+        <item name="android:textSize">@dimen/sp_12</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:layout_marginRight">@dimen/dp_3</item>
+        <item name="android:layout_marginLeft">@dimen/dp_3</item>
+    </style>
+    <!--评论的评论内容-->
+    <style name="comment_content_y">
+        <item name="android:textSize">@dimen/sp_12</item>
+        <item name="android:layout_marginRight">@dimen/dp_3</item>
+        <item name="android:layout_marginLeft">@dimen/dp_3</item>
+    </style>
+
+
+    <!--homefragment标题文本框风格样式-->
+    <style name="homefragment_titleBar_text_style">
+        <item name="android:textSize">@dimen/dp_20</item>
+        <item name="android:textColor">@color/homefragment_cityTextColor</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <!--homefragment标题按钮风格样式-->
+    <style name="titleBar_button_style">
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_width">@dimen/dp_50</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <!--homefragment 8个按钮的风格样式-->
+    <style name="home_secondhead_textview_style">
+        <item name="android:gravity">center</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_width">@dimen/dp_0</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+
+    <!--homefragment标题文本框风格样式-->
+    <style name="citychioce_titleBar_text_style">
+        <item name="android:textSize">@dimen/homefragment_citynameSize</item>
+        <item name="android:textColor">@color/homefragment_cityTextColor</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <!--homefragment标题按钮风格样式-->
+    <style name="citychioce_button_style">
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_width">@dimen/dp_50</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+</resources>

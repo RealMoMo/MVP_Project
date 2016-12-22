@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--item的头部信息-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:orientation="horizontal">
+
+        <!--头像-->
+        <ImageView
+            android:id="@+id/iv_head_y"
+            style="@style/head_img_y"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_40"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <!--视频发布人-->
+            <TextView
+                android:id="@+id/tv_name_y"
+                style="@style/name_Y"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <!--视频发布时间-->
+            <TextView
+                android:id="@+id/tv_time_y"
+                style="@style/time_Y"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_xiazai_y"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+            android:padding="@dimen/dp_5"
+            android:src="@drawable/down_video" />
+    </LinearLayout>
+    <!--视频标题-->
+    <TextView
+        android:id="@+id/tv_title_y"
+        style="@style/title_Y"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <!--视频布局，包括缩略图，播放标记图，播放次数，视频长度-->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <!--视屏高度在代码中自定义-->
+        <ImageView
+            android:id="@+id/iv_thumbnail_y"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:layout_gravity="center" />
+
+        <ImageView
+            android:id="@+id/iv_playSing_y"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"
+            android:layout_gravity="center"
+            android:src="@drawable/play_64px" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="#aaaaaaaa">
+
+            <TextView
+                android:id="@+id/tv_playCount_y"
+                style="@style/video_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="@dimen/dp_2" />
+
+            <TextView
+                android:id="@+id/tv_long_y"
+                style="@style/video_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+                android:layout_marginRight="@dimen/dp_2" />
+        </FrameLayout>
+    </FrameLayout>
+    <!--选项布局，包括点赞，分享，进入评论界面-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_3"
+        android:layout_marginTop="@dimen/dp_3"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/iv_likes_y"
+                style="@style/botton_image_Y"
+                android:src="@drawable/ding_not_clicked" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_likesNum_y"
+                    style="@style/botton_number_Y" />
+
+                <ImageView
+                    android:id="@+id/iv_dianzan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/dianzan" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/iv_bads_y"
+                style="@style/botton_image_Y"
+                android:src="@drawable/cai_not_clicked" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_badsNum_y"
+                    style="@style/botton_number_Y" />
+
+                <ImageView
+                    android:id="@+id/iv_undianzan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/undianzan" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/iv_share_y"
+                style="@style/botton_image_Y"
+                android:src="@drawable/forward" />
+
+            <TextView
+                android:id="@+id/tv_shareNum_y"
+                style="@style/botton_number_Y" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/iv_comment_y"
+                style="@style/botton_image_Y"
+                android:src="@drawable/commend_black" />
+
+            <TextView
+                android:id="@+id/tv_commentNum_y"
+                style="@style/botton_number_Y" />
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

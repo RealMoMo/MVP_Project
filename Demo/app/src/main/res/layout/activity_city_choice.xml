@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_city_choice"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.song.kanfang_tuan.ui.activity.CityChoiceActivity">
+
+
+    <!--标题栏-->
+    <RelativeLayout
+        android:id="@+id/title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50"
+        android:background="@color/CityChoice_titleBackground">
+
+        <TextView
+            style="@style/citychioce_titleBar_text_style"
+            android:text="@string/citychioce_titletext" />
+
+        <Button
+            android:textColor="@color/citychoiceactivity_titletextColor"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:id="@+id/city_choice_cancel"
+            style="@style/citychioce_button_style"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/dp_10"
+            android:background="@color/CityChoice_btn_cancelBackground"
+            android:gravity="center"
+            android:text="@string/citychioce_buttontext" />
+    </RelativeLayout>
+
+    <!--搜索-->
+    <!--android:focusable="true"
+        android:focusableInTouchMode="true"
+        解决edittext焦点问题-->
+    <LinearLayout
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50"
+        android:background="@color/CityChoice_et_layoutBackground"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:textSize="@dimen/sp_12"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/city_et_paddingLeft"
+            android:textColorHint="@color/CityChoice_et_textColorHint"
+            android:drawableLeft="@drawable/icon_search"
+            android:layout_margin="@dimen/city_et_layout_margin"
+            android:background="@drawable/citychioce_edittext_shape"
+            android:hint="@string/citychioce_searchhinttext"
+            android:id="@+id/et_search"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <!--头部悬停控件-->
+
+        <se.emilsjolander.stickylistheaders.StickyListHeadersListView
+            android:id="@+id/lv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        <!--侧滑控件-->
+        <com.example.song.kanfang_tuan.widget.CitySlideView
+            android:id="@+id/slideView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center_vertical"
+            android:padding="@dimen/city_slideView_padding"/>
+        <!--放大控件-->
+        <com.example.song.kanfang_tuan.widget.CitySlideLetterView
+            android:id="@+id/letterView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"/>
+    </FrameLayout>
+
+
+</LinearLayout>

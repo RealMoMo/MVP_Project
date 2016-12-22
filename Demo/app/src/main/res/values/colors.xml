@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="video_text_color">#ffffffff</color>
+    <color name="video_time">#99999999</color>
+
+    <!--homefragment-->
+    <color name="homefragment_titleBarBackground">#19ACCA</color>
+    <color name="homefragment_searchTextColor">#FDFEFF</color>
+    <color name="homefragment_cityTextColor">#FFF</color>
+    <color name="homefragment_searchBackground">#06a0bf</color>
+    <color name="homefragment_lv_titleColor">#000</color>
+    <color name="homefragment_lv_summaryColor">#ccc</color>
+
+    <!--loginactivity-->
+    <color name="loginactivity_titleBarBackground">#19ACCA</color>
+    <color name="loginactivity_titletextColor">#fff</color>
+
+    <!--citychoiceactivity-->
+    <color name="citychoiceactivity_titletextColor">#fff</color>
+
+
+    <!--QRCode-->
+    <color name="QRCode_inner_corner_color">#1c5adf</color>
+
+
+    <!--CityChoiceActivity-->
+    <!--标题栏-->
+    <color name="CityChoice_titleBackground">#19ACCA</color>
+    <!--取消按钮-->
+    <color name="CityChoice_btn_cancelBackground">#5EC5DA</color>
+    <!--检索文本框-->
+    <color name="CityChoice_et_layoutBackground">#F5F8FC</color>
+    <color name="CityChoice_et_textColorHint">#C5C5C5</color>
+    <!--city_head-->
+    <color name="city_head_layout_background">#0af1e5</color>
+
+    <!--searchactivity -->
+    <color name="search_LayoutBackground">#f0f0f0</color>
+    <color name="search_Background">#fff</color>
+    <color name="search_edittext_hintColor">#C0C0C0</color>
+    <color name="search_edittext_textColor">#000</color>
+    <color name="search_btnColor">#F54949</color>
+    <color name="search_sp">#C0C0C0</color>
+    <color name="search_loadinmoreiv_Background">#fff</color>
+    <color name="search_lv_title">#000</color>
+    <color name="search_lv_place">#dedada</color>
+    <color name="search_lv_price">#F54949</color>
+    <color name="search_lv_address">#bab7b7</color>
+    <color name="search_lv_typetext">#fff</color>
+    <color name="search_lv_type1">#f00</color>
+    <color name="search_lv_type2">#f4d509</color>
+    <color name="search_lv_type3">#47a3f2</color>
+
+
+</resources>

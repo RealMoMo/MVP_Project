@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_qqlogin"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.song.kanfang_tuan.ui.activity.QQLoginActivity">
+
+
+    <!--标题栏-->
+    <LinearLayout
+        android:id="@+id/ll_titlelayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50"
+        android:background="@color/loginactivity_titleBarBackground"
+        android:gravity="center_vertical">
+
+
+        <TextView
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:id="@+id/tv_titlebarlogin"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="@dimen/sp_20"
+            android:text="@string/loginactivity_logintitletext"
+            android:textColor="@color/loginactivity_titletextColor" />
+
+
+
+    </LinearLayout>
+
+
+    <TextView
+        android:onClick="testLogin"
+        android:id="@+id/iv_loginqq"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/biz_account_login_way_qq"
+        android:text="@string/loginactivity_text"/>
+
+</RelativeLayout>
