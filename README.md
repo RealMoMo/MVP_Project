@@ -12,6 +12,7 @@ RealMoMo
    邮箱：czb166@qq.com
 -------------
 ####开发目的: 
+<br>svn与git的使用</br>
 <br>学习并掌握MVP开发模式</br>
-
+<br>掌握第三方app登录与分享</br>
 
