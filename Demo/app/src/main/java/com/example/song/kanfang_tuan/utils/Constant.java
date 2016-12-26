@@ -11,8 +11,10 @@ public class Constant {
 
     //点击视频跳转的标记
     public static final int VIDEO_TYPE = -10;
-    //点击平困跳转的标记
+    //点击评论跳转的标记
     public static final int COMMENT_TYPE = -11;
+    //type的key
+    public static final String INTENT_TYPE = "type";
     //点击跳转到视频详情界面的key
     public static final String INTENT_VIDEO_KEY = "intent_video";
 
@@ -51,6 +53,10 @@ public class Constant {
      */
     public static final String KEY_CITYID = "cityid";
 
+
+    // 调用相机拍照的请求码
+    public static final int REQUEST_TAKE_PHOTO_CODE = 101;
+
     /**
      * searchactivity 搜索按钮的文本
      */
@@ -65,5 +71,18 @@ public class Constant {
      */
     public static final String FID ="fid";
 
+
+    /* 请求识别码 */
+    public static final String IMAGE_TYPE = "image/*";
+    public static final int IMAGE_REQUEST_CODE = 0x102;
+    public static final int CODE_GALLERY_REQUEST = 0xa0;
+    public static final int CODE_RESULT_REQUEST = 0xa2;
+
+    /**
+     * 裁剪原始的图片
+     */
+    // 裁剪后图片的宽(X)和高(Y),480 X 480的正方形。
+    public static final int OUTPUT_X = 80;
+    public static final int OUTPUT_Y = 80;
 
 }

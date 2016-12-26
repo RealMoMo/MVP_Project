@@ -6,6 +6,7 @@
 
     <color name="video_text_color">#ffffffff</color>
     <color name="video_time">#99999999</color>
+    <color name="video_title_color">#000</color>
 
     <!--homefragment-->
     <color name="homefragment_titleBarBackground">#19ACCA</color>
@@ -36,7 +37,7 @@
     <color name="CityChoice_et_layoutBackground">#F5F8FC</color>
     <color name="CityChoice_et_textColorHint">#C5C5C5</color>
     <!--city_head-->
-    <color name="city_head_layout_background">#0af1e5</color>
+    <color name="city_head_layout_background">#E0F0F4</color>
 
     <!--searchactivity -->
     <color name="search_LayoutBackground">#f0f0f0</color>

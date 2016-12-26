@@ -9,5 +9,5 @@ import java.util.List;
  */
 
 public interface IVideoModel {
-    public List<MVideoBean.ListBean> getData(int end);
+    public List<MVideoBean.ListBean> getData(int start,int end);
 }

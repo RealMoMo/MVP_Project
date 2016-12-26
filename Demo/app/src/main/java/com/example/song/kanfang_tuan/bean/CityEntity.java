@@ -34,6 +34,19 @@ public class CityEntity {
      */
     private long typeId;
 
+    public String getCitywordheadpinyin() {
+        return citywordheadpinyin;
+    }
+
+    public void setCitywordheadpinyin(String citywordheadpinyin) {
+        this.citywordheadpinyin = citywordheadpinyin;
+    }
+
+    /**
+     * 城市首字母拼音
+     * */
+    private String citywordheadpinyin;
+
 
     private String cityid;
     private String cityalias;

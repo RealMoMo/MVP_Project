@@ -52,7 +52,7 @@ public class VideoFragment extends Fragment implements IVideoFragment, SwipeRefr
         //创建VideoPresenter的实例
         iVideoPresenter = new VideoPresenter(this);
         //获取数据
-        iVideoPresenter.getData(numberOfUpLoadMore * num);
+        iVideoPresenter.getData(0, numberOfUpLoadMore * num);
     }
 
     private void initViews(View view) {
@@ -90,7 +90,8 @@ public class VideoFragment extends Fragment implements IVideoFragment, SwipeRefr
     //下拉刷新
     @Override
     public void onRefresh() {
-        iVideoPresenter.getData(num * numberOfUpLoadMore);
+        numberOfUpLoadMore = 1;
+        iVideoPresenter.getData(0, num * numberOfUpLoadMore);
     }
 
     //上拉加载更多
@@ -98,7 +99,7 @@ public class VideoFragment extends Fragment implements IVideoFragment, SwipeRefr
     public void onScrollStateChanged(AbsListView view, int scrollState) {
         if (isMoreData && scrollState == SCROLL_STATE_IDLE) {
             numberOfUpLoadMore++;
-            iVideoPresenter.getData(numberOfUpLoadMore * num);
+            iVideoPresenter.getData((numberOfUpLoadMore - 1) * num, numberOfUpLoadMore * num);
         }
     }
 

@@ -120,21 +120,83 @@ public class CityChoiceAdapter extends BaseAdapter implements StickyListHeadersA
      */
     //检索方法
     public void search(String strSearch) {
+//        //先清除展示的数据
+//        data.clear();
+//        //如果搜索字符串为null或长度为0,就加载所以数据
+//        if (strSearch == null || strSearch.length() == 0) {
+//            data.addAll(allData);
+//        } else {
+//            //搜索逻辑代码
+//            for (CityEntity city : allData) {
+//                //如果城市名中，包含有搜索的字符串，表示检索到了
+//                if (city.getCityname().contains(strSearch)) {
+//                    data.add(city);
+//                }
+//            }
+//        }
+//        //把搜索的结果设置给自己，再更新新界面
+//        notifyDataSetChanged();
+
         //先清除展示的数据
         data.clear();
-        //如果搜索字符串为null或长度为0,就加载所以数据
-        if (strSearch == null || strSearch.length() == 0) {
+        //如果搜索字符串为null或长度为0，就加载所有数据
+        if(strSearch==null||strSearch.length()==0){
             data.addAll(allData);
-        } else {
+        }else {
             //搜索逻辑代码
+            //if else if顺序不能乱
             for (CityEntity city : allData) {
-                //如果城市名中，包含有搜索的字符串，表示检索到了
+                //(中文搜索)如果城市名中，包含有搜索的字符串，表示检索到了
                 if (city.getCityname().contains(strSearch)) {
                     data.add(city);
+                    //拼音首字母搜索
+                }else if(city.getCitywordheadpinyin().contains(strSearch)){
+                    data.add(city);
+                    //单个拼音字完全匹配搜索
+                }else if(searchOneWord(city,strSearch)){
+                    data.add(city);
+                    //完全匹配搜索
+                }else if(searchAllWord(city,strSearch)){
+                    data.add(city);
                 }
+
+
+            }
+
+
+        }
+        //把搜索的结果设置给自己，再更新界面
+        notifyDataSetChanged();
+
+    }
+
+
+
+    private boolean searchAllWord(CityEntity bean,String strSearch){
+        String cityName = bean.getCitypinyin().replace(" ","");
+
+        return  isSame(cityName,strSearch);
+
+    }
+
+    private boolean searchOneWord(CityEntity bean,String strSearch){
+        boolean flag;
+        String[] cityName = bean.getCitypinyin().split(" ");
+        for (int i=0;i<cityName.length;i++) {
+
+
+            if(isSame(cityName[i],strSearch)==true){
+                return true;
             }
         }
-        //把搜索的结果设置给自己，再更新新界面
-        notifyDataSetChanged();
+        return false;
     }
+
+    //完全匹配字符串方法
+    private boolean isSame(String word,String strSearch){
+        String matchWord = word.substring(0,word.length()<strSearch.length()?word.length():strSearch.length());
+        return matchWord.equals(strSearch);
+    }
+
+
 }

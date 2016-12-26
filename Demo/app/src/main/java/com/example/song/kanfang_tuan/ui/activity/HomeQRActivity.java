@@ -73,10 +73,8 @@ public class HomeQRActivity extends NoActionBarActivity {
         // 判断输入不为空，按钮可点击
         if (etTextQR.length() != 0) {
             btnCreateQR.setEnabled(true);
-            //            but_queryChange.setBackgroundResource(R.drawable.login_bar_btn);
         } else {
             btnCreateQR.setEnabled(false);
-            //            but_queryChange.setBackgroundResource(R.color.login_bar_btn_enable);
         }
     }
 

@@ -70,13 +70,13 @@ public class CitySlideView extends View{
         //画笔
         mPaint = new Paint();
         //设置文字大小
-        mPaint.setTextSize(28);
-        mPaint.setColor(Color.parseColor("#0835e9"));
+//        mPaint.setTextSize(28);
+        mPaint.setColor(Color.parseColor("#19ACCA"));
         mPaint.setAntiAlias(true);
         //计算文本的宽度
-        textW = mPaint.measureText(lettes[0]);
+//        textW = mPaint.measureText(lettes[0]);
         //计算文本的高度
-        textH = mPaint.descent() - mPaint.ascent();
+//        textH = mPaint.descent() - mPaint.ascent();
 
     }
 
@@ -84,6 +84,12 @@ public class CitySlideView extends View{
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         //        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         setMeasuredDimension(getMeasureWH(widthMeasureSpec, 1), getMeasureWH(heightMeasureSpec, 2));
+        //获取绘制每个letter高度
+        textH =(getMeasuredHeight()-getPaddingBottom()-getPaddingTop())/lettes.length;
+        //根据绘制每个letter高度，来设置文字大小(减5只为字体间的间隙大一丁点)
+        mPaint.setTextSize(textH);
+        //获取绘制每个letter宽度(拿最宽的字体即letters[0])(已测试：不需要重新调用setMeasuredDimension)
+        textW = mPaint.measureText(lettes[0]);
     }
 
     private int getMeasureWH(int wh, int type) {
@@ -99,10 +105,11 @@ public class CitySlideView extends View{
                 //如果是宽度，则是文本的测量宽度
                 if (type == 1) {
                     //测量宽度
-                    return (int) textW + getPaddingRight();
+                    return (int) textW + getPaddingRight()+getPaddingLeft();
                 } else {
+                    return size;
                     //如果是高度，则是所有文本的高度之和
-                    return (int) (lettes.length * textH) + getPaddingTop() + getPaddingBottom();
+//                    return (int) (lettes.length * textH) + getPaddingTop() + getPaddingBottom();
                 }
             }
         }
@@ -126,7 +133,7 @@ public class CitySlideView extends View{
                 mPaint.setColor(Color.parseColor("#FFE90808"));
             } else {
                 mPaint.setFakeBoldText(false);
-                mPaint.setColor(Color.parseColor("#0835e9"));
+                mPaint.setColor(Color.parseColor("#19ACCA"));
             }
 
             canvas.drawText(lettes[i], dx / 2, dy, mPaint);

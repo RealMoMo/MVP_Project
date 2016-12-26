@@ -3,9 +3,11 @@ package com.example.song.kanfang_tuan.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Parcelable;
 import android.text.Html;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.ScaleAnimation;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -17,11 +19,16 @@ import com.example.song.kanfang_tuan.R;
 import com.example.song.kanfang_tuan.base.BaseAdapter;
 import com.example.song.kanfang_tuan.bean.MVideoBean;
 import com.example.song.kanfang_tuan.ui.activity.DetailsActivity;
+import com.example.song.kanfang_tuan.utils.ShareToQQ;
 import com.example.song.kanfang_tuan.widget.CircularBitmap;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import static com.example.song.kanfang_tuan.utils.Constant.COMMENT_TYPE;
+import static com.example.song.kanfang_tuan.utils.Constant.INTENT_TYPE;
+import static com.example.song.kanfang_tuan.utils.Constant.INTENT_VIDEO_KEY;
+import static com.example.song.kanfang_tuan.utils.Constant.VIDEO_TYPE;
 import static com.example.song.kanfang_tuan.utils.Constant.heightPixels;
 import static com.example.song.kanfang_tuan.utils.Constant.widthPixels;
 
@@ -38,6 +45,9 @@ public class VideoAdapter extends BaseAdapter<MVideoBean.ListBean> implements Vi
     private static final int BING_ITEM = -1;
     //是否已经点赞或者不赞
     private static final int BING_POSITION = -2;
+
+    //分享绑定内容
+    private static final int TAG_SHARED = -21;
 
     public VideoAdapter(Context context, List<MVideoBean.ListBean> data, int... layoutId) {
         super(context, data, layoutId);
@@ -74,6 +84,8 @@ public class VideoAdapter extends BaseAdapter<MVideoBean.ListBean> implements Vi
 
         ImageView iv_thumbnail = (ImageView) mHolder.mView.findViewById(R.id.iv_thumbnail_y);
         setImg(listBean.getVideo().getThumbnail().get(0), iv_thumbnail);//缩略图
+        iv_thumbnail.setTag(BING_POSITION, position);
+
 
         float v_width = listBean.getVideo().getWidth();
         float v_height = listBean.getVideo().getHeight();
@@ -81,42 +93,51 @@ public class VideoAdapter extends BaseAdapter<MVideoBean.ListBean> implements Vi
         if (v_width > widthPixels) {
             v_height = widthPixels / v_width * v_height;
             v_width = widthPixels;
-        }else {
-            if (v_height > heightPixels/2) {
-                v_width = heightPixels/2 / v_height * v_width;
-                v_height = heightPixels/2;
-            }else {
+        } else {
+            if (v_height > heightPixels / 2) {
+                v_width = heightPixels / 2 / v_height * v_width;
+                v_height = heightPixels / 2;
+            } else {
                 v_height = widthPixels / v_width * v_height;
                 v_width = widthPixels;
             }
         }
-        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams((int)v_width, (int)v_height);
-        params.gravity= Gravity.CENTER_HORIZONTAL;
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams((int) v_width, (int) v_height);
+        params.gravity = Gravity.CENTER_HORIZONTAL;
         iv_thumbnail.setLayoutParams(params);
         iv_thumbnail.requestLayout();
 
         //播放状态标记
         ImageView iv_playsing = (ImageView) mHolder.mView.findViewById(R.id.iv_playSing_y);
+        iv_playsing.setTag(BING_POSITION, position);
 
         TextView tv_playCount = (TextView) mHolder.mView.findViewById(R.id.tv_playCount_y);
         tv_playCount.setText(listBean.getVideo().getPlaycount() + "次播放");//播放次数
 
         //视频时长
         TextView tv_long = (TextView) mHolder.mView.findViewById(R.id.tv_long_y);
-        int playfcount = listBean.getVideo().getPlayfcount();
+        int playfcount = listBean.getVideo().getDuration();
         int minute = playfcount / 60;
         int second = playfcount % 60;
         if (minute == 0) {
+            if (second<10){
+            tv_long.setText("00:0" + second);
+            }else {
             tv_long.setText("00:" + second);
+            }
         } else {
-            tv_long.setText(minute + ":" + second);
+            if (second<10){
+                tv_long.setText(minute+":0" + second);
+            }else {
+                tv_long.setText(minute + ":" + second);
+            }
         }
 
         ImageView iv_likes = (ImageView) mHolder.mView.findViewById(R.id.iv_likes_y);
         TextView tv_likesNum = (TextView) mHolder.mView.findViewById(R.id.tv_likesNum_y);
         ImageView iv_bads = (ImageView) mHolder.mView.findViewById(R.id.iv_bads_y);
         TextView tv_badsNum = (TextView) mHolder.mView.findViewById(R.id.tv_badsNum_y);
-//        if (!data.get(position).isDlick()) {
+
         iv_likes.setImageResource(R.drawable.ding_not_clicked);
         tv_likesNum.setText(String.valueOf(listBean.getUp()));//点赞数
         tv_likesNum.setTextColor(Color.BLACK);
@@ -126,14 +147,7 @@ public class VideoAdapter extends BaseAdapter<MVideoBean.ListBean> implements Vi
 
         tv_likesNum.setOnClickListener(this);
         tv_likesNum.setTag(BING_ITEM, mHolder.mView);
-//        } else {
-//            iv_likes.setImageResource(R.drawable.ding_has_clicked);
-//            tv_likesNum.setText(String.valueOf(listBean.getUp()));//点赞数
-//            tv_likesNum.setTextColor(Color.RED);
-//            noDoClick(mHolder.mView);
-//        }
-//
-//        if (!data.get(position).isDlick()) {
+
         iv_bads.setImageResource(R.drawable.cai_not_clicked);
         tv_badsNum.setText(String.valueOf(listBean.getDown()));//点不赞数
         tv_badsNum.setTextColor(Color.BLACK);
@@ -143,12 +157,6 @@ public class VideoAdapter extends BaseAdapter<MVideoBean.ListBean> implements Vi
 
         tv_badsNum.setOnClickListener(this);
         iv_bads.setTag(BING_ITEM, mHolder.mView);
-//        } else {
-//            iv_likes.setImageResource(R.drawable.cai_has_clicked);
-//            tv_likesNum.setText(String.valueOf(listBean.getDown()));
-//            tv_likesNum.setTextColor(Color.RED);
-//            noDoClick(mHolder.mView);
-//        }
 
 
         ImageView iv_share = (ImageView) mHolder.mView.findViewById(R.id.iv_share_y);
@@ -158,6 +166,8 @@ public class VideoAdapter extends BaseAdapter<MVideoBean.ListBean> implements Vi
         ImageView iv_comment = (ImageView) mHolder.mView.findViewById(R.id.iv_comment_y);
         TextView tv_commentNum = (TextView) mHolder.mView.findViewById(R.id.tv_commentNum_y);
         tv_commentNum.setText(String.valueOf(listBean.getComment()));//评论数
+        iv_comment.setTag(BING_POSITION, position);
+        tv_commentNum.setTag(BING_POSITION, position);
 
         //点赞和点不赞的两个动画图片，首先隐藏
         ImageView dianzan = (ImageView) mHolder.mView.findViewById(R.id.iv_dianzan);
@@ -173,27 +183,33 @@ public class VideoAdapter extends BaseAdapter<MVideoBean.ListBean> implements Vi
         //点击分享
         iv_share.setOnClickListener(this);
         tv_shareNum.setOnClickListener(this);
+        iv_share.setTag(TAG_SHARED,listBean);
+        tv_shareNum.setTag(TAG_SHARED,listBean);
+
         //点击评论
         iv_comment.setOnClickListener(this);
         tv_commentNum.setOnClickListener(this);
 
         //设置评论区域
-        setCommentLayout(mHolder.mView,listBean);
+        setCommentLayout(mHolder.mView, listBean);
     }
 
     private void setCommentLayout(View mView, MVideoBean.ListBean listBean) {
         LinearLayout commentLayout = (LinearLayout) mView.findViewById(R.id.ll_commentLayout);
         commentLayout.removeAllViews();
         List<MVideoBean.ListBean.TopCommentsBean> top_comments = listBean.getTop_comments();
-        if (top_comments!=null&&top_comments.size()>0){
+        if (top_comments != null && top_comments.size() > 0) {
             for (int i = 0; i < top_comments.size(); i++) {
-                TextView textView=new TextView(context);
-                String str="<font color='#0000ff'>"+top_comments.get(i).getU().getName()+":"+"</font>"+"<font color='#000000'>"+top_comments.get(i).getContent()+"</font>";
-                textView.setTextSize(12);
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                params.setMargins(20,0,0,5);
+                TextView textView = new TextView(context);
+                String str = "<font color='#3ba4ea'>" + top_comments.get(i).getU().getName() + ":" + "</font>" + "<font color='#000000'>" + top_comments.get(i).getContent() + "</font>";
+                textView.setTextSize(13);
                 textView.setText(Html.fromHtml(str));
+                textView.setLayoutParams(params);
                 commentLayout.addView(textView);
             }
-        }else {
+        } else {
             return;
         }
     }
@@ -202,9 +218,12 @@ public class VideoAdapter extends BaseAdapter<MVideoBean.ListBean> implements Vi
     public void onClick(View v) {
         switch (v.getId()) {
             //点击跳转到视频播放界面
-            case R.id.iv_thumbnail_y:
-            case R.id.iv_playSing_y: {
+            case R.id.iv_playSing_y:
+            case R.id.iv_thumbnail_y: {
                 Intent intent = new Intent(context, DetailsActivity.class);
+                int position = (Integer) v.getTag(BING_POSITION);
+                intent.putExtra(INTENT_VIDEO_KEY, (Parcelable) data.get(position));
+                intent.putExtra(INTENT_TYPE, VIDEO_TYPE);
                 context.startActivity(intent);
             }
             break;
@@ -219,7 +238,7 @@ public class VideoAdapter extends BaseAdapter<MVideoBean.ListBean> implements Vi
                 tv_dianzan.setText(String.valueOf(Integer.parseInt(string) + 1));
                 ((ImageView) item.findViewById(R.id.iv_likes_y)).setImageResource(R.drawable.ding_has_clicked);
                 noDoClick(item);
-                data.get(position).setDlick(true);
+//                data.get(position).setDlick(true);
                 startAnimation(item.findViewById(R.id.iv_dianzan));
             }
             break;
@@ -234,18 +253,27 @@ public class VideoAdapter extends BaseAdapter<MVideoBean.ListBean> implements Vi
                 tv_undianzan.setText(String.valueOf(Integer.parseInt(string) + 1));
                 ((ImageView) item.findViewById(R.id.iv_bads_y)).setImageResource(R.drawable.cai_has_clicked);
                 noDoClick(item);
-                data.get(position).setDlick(true);
+//                data.get(position).setDlick(true);
                 startAnimation(item.findViewById(R.id.iv_undianzan));
             }
             break;
             //点分享
             case R.id.iv_share_y:
             case R.id.tv_shareNum_y: {
+                MVideoBean.ListBean tag_listbean = (MVideoBean.ListBean) v.getTag(TAG_SHARED);
+                if (tag_listbean != null) {
+                    ShareToQQ.showShare(tag_listbean.getShare_url(), tag_listbean.getVideo().getThumbnail_small().get(0), tag_listbean.getText());
+                }
             }
             break;
             //点评论,跳转到视频播放界面的评论区域
             case R.id.iv_comment_y:
             case R.id.tv_commentNum_y: {
+                Intent intent = new Intent(context, DetailsActivity.class);
+                int position = (Integer) v.getTag(BING_POSITION);
+                intent.putExtra(INTENT_VIDEO_KEY, (Parcelable) data.get(position));
+                intent.putExtra(INTENT_TYPE, COMMENT_TYPE);
+                context.startActivity(intent);
             }
             break;
         }
@@ -258,10 +286,16 @@ public class VideoAdapter extends BaseAdapter<MVideoBean.ListBean> implements Vi
 
     //设置图片文件
     private void setImg(String url, ImageView imageView) {
+        if (url.endsWith("gif")) {
+            return;
+        }
         Picasso.with(MyApp.getApp()).load(url).into(imageView);
     }
 
     private void setImg(String url, ImageView imageView, int type) {
+        if (url.endsWith("gif")) {
+            return;
+        }
         Picasso.with(MyApp.getApp()).load(url).transform(new CircularBitmap()).into(imageView);
     }
 

@@ -30,15 +30,16 @@ public class VideoPresenter implements IVideoPresenter, OnVideoLoadLinstener {
         iVideoModel = new VideoModel(this);
 
         data = new ArrayList<>();
-        adapter = new VideoAdapter(((VideoFragment) iVideoFragment).getContext(), data, R.layout.item_layout);
+        adapter = new VideoAdapter(((VideoFragment) iVideoFragment).getContext(), data, R.layout.video_item_layout);
         iVideoFragment.setLvVideo(adapter);
     }
 
-    public List<MVideoBean.ListBean> getData(int end) {
-        data.clear();
-        data.addAll(iVideoModel.getData(end));
-        adapter.notifyDataSetChanged();
-        return data;
+    public void getData(int start, int end) {
+        if (start == 0) {
+            data.clear();
+            adapter.notifyDataSetChanged();
+        }
+        iVideoModel.getData(start, end);
     }
 
     //数据下载是的三种情况
@@ -47,11 +48,11 @@ public class VideoPresenter implements IVideoPresenter, OnVideoLoadLinstener {
     //noNetworking      网络请求失败
     @Override
     public void getDataSuccess(List<MVideoBean.ListBean> list) {
-        data.clear();
         data.addAll(list);
         adapter.notifyDataSetChanged();
         refreshFinish();
     }
+
     @Override
     public void getDataFail() {
         refreshFinish();
@@ -65,7 +66,7 @@ public class VideoPresenter implements IVideoPresenter, OnVideoLoadLinstener {
     }
 
     //下拉刷新完成
-    private void refreshFinish(){
+    private void refreshFinish() {
         iVideoFragment.getSrl_downRefresh().setRefreshing(false);
     }
 }

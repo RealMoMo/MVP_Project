@@ -27,7 +27,7 @@ public class VideoModel implements IVideoModel {
     }
 
     @Override
-    public List<MVideoBean.ListBean> getData(int end) {
+    public List<MVideoBean.ListBean> getData(final int start, int end) {
 
         IApiService iApiService = ApiManager.creatApi(IApiService.BAISI_BASE_URL);
         Call<MVideoBean> videoData = iApiService.getVideoData(end);
@@ -37,9 +37,11 @@ public class VideoModel implements IVideoModel {
                 MVideoBean body = response.body();
                 List<MVideoBean.ListBean> list = body.getList();
                 if (list != null && list.size() > 0) {
-                    linstener.getDataSuccess(list);
                     data.clear();
-                    data.addAll(list);
+                    for (int i = start; i < list.size(); i++) {
+                        data.add(list.get(i));
+                    }
+                    linstener.getDataSuccess(data);
                 } else {
                     linstener.getDataFail();
                 }

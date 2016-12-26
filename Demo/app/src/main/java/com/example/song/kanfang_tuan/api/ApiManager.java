@@ -19,15 +19,14 @@ public class ApiManager {
         return iApiService;
     }
 
+
     public static IApiService creatStringApi(String baseurl){
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(baseurl)
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .build();
-
         IApiService iApiService = retrofit.create(IApiService.class);
 
         return iApiService;
     }
-
 }

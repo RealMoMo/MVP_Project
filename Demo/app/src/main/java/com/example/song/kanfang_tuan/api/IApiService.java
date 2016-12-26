@@ -1,6 +1,5 @@
 package com.example.song.kanfang_tuan.api;
 
-import com.example.song.kanfang_tuan.bean.DetailsBean;
 import com.example.song.kanfang_tuan.bean.HomeBannerEntity;
 import com.example.song.kanfang_tuan.bean.HomeContentEntity;
 import com.example.song.kanfang_tuan.bean.HomeSearchEntity;
@@ -25,23 +24,29 @@ public interface IApiService {
      * 百思不得姐的视频接口
      */
     public static final String VIDEO_URL = "topic/list/jingxuan/41/budejie-android-6.6.2/0-{json}.json?market=guanwang&udid=861619000088224&appname=baisibudejie&os=4.2.2&client=android&visiting=&mac=00%3A08%3A22%3A2c%3A0f%3A5e&ver=6.6.2";
+
     //方法   有一个参数
     @GET(VIDEO_URL)
     Call<MVideoBean> getVideoData(@Path("json") int json);
 
+
+    /**
+     * 百思不得姐视频详情界面
+     */
+    public static final String BAISI_DETAILS_BASEURL = "http://c.api.budejie.com/";
     /**
      * 百思不得姐的视频详情及评论界面数据接口
      */
-    public static final String DETAILS_URL = "";
+    public static final String DETAILS_URL = "topic/comment_list/{video_id}/0/budejie-android-6.6.1/0-{number}.json?";
     //方法
     @GET(DETAILS_URL)
-    Call<DetailsBean> getDetailsData();
+    Call<String> getDetailsData(@Path("video_id") String video_id, @Path("number") int number);
 
 
     //================homefragment=========================
 
     //主机地址，域名
-    public static final String HOME_BASE_URL="http://ikft.house.qq.com/";
+    public static final String HOME_BASE_URL = "http://ikft.house.qq.com/";
 
     //城市选择
     public static final String CITY_CHOICE = "index.php?guid=866500021200250&devua=appkft_1080_1920_XiaomiMI4LTE_1.8.3_Android19&act=kftcitylistnew&channel=71&devid=866500021200250&appname=QQHouse&mod=appkft";
@@ -50,7 +55,7 @@ public interface IApiService {
 
     /**
      * 首页 ListView内容
-     *
+     * <p>
      * 进入或刷新：
      * pageflag=0
      * buttonmore=0
@@ -59,32 +64,32 @@ public interface IApiService {
      * pageflag=1
      * buttonmore=0
      * lastid  为之前加载数据的最后一个item的id
-     *
-     *
+     * <p>
+     * <p>
      * 2个参数： pageflag lastid  刷新的时候lastid=0即可
      */
-    public static final String HOME_CONTENT="index.php?act=newslist&mod=appkft&devua=appkft_1080_1920_XiaomiMI4LTE_2.3_Android23&appname=QQHouse&guid=866500027180423&devid=866500027180423&huid=H999116942&majorversion=v2&reqnum=20&channel=65&buttonmore=0";
+    public static final String HOME_CONTENT = "index.php?act=newslist&mod=appkft&devua=appkft_1080_1920_XiaomiMI4LTE_2.3_Android23&appname=QQHouse&guid=866500027180423&devid=866500027180423&huid=H999116942&majorversion=v2&reqnum=20&channel=65&buttonmore=0";
 
 
     /**
      * 获取首页的Banner数据
      * <p/>
      * cityid是可变
-     *
+     * <p>
      * 参数：cityid
      */
-    public static final String HOME_BANNER="index.php?act=homepage&mod=appkft&devua=appkft_1080_1920_XiaomiMI4LTE_2.3_Android23&appname=QQHouse&guid=866500027180423&devid=866500027180423&huid=H999116942&channel=65";
+    public static final String HOME_BANNER = "index.php?act=homepage&mod=appkft&devua=appkft_1080_1920_XiaomiMI4LTE_2.3_Android23&appname=QQHouse&guid=866500027180423&devid=866500027180423&huid=H999116942&channel=65";
 
 
     //首页广告轮播
     @GET(HOME_BANNER)
-    Call<HomeBannerEntity> getHomeBannerContent(@Query("cityid")String cityid);
+    Call<HomeBannerEntity> getHomeBannerContent(@Query("cityid") String cityid);
 
     //首页listview
     @GET(HOME_CONTENT)
-    Call<HomeContentEntity> getHomeListViewContent(@Query("cityid")String cityId,
-                                                   @Query("pageflag")int pageflag,
-                                                   @Query("lastid")String lasid);
+    Call<HomeContentEntity> getHomeListViewContent(@Query("cityid") String cityId,
+                                                   @Query("pageflag") int pageflag,
+                                                   @Query("lastid") String lasid);
 
 
 
@@ -124,17 +129,15 @@ public interface IApiService {
     /**
      * 获取首页Listview_item的资讯详情baseUrl
      * <p/>
-     *
      */
-    public static final String HOME_ITEM_URL="http://m.house.qq.com/a/";
+    public static final String HOME_ITEM_URL = "http://m.house.qq.com/a/";
 
 
     /**
      * 获取首页Listview_item的资讯详情
      * <p/>
-     *
      */
-    public static final String HOUSE_DETAIL="index.php?guid=866500021200250&devua=appkft_1080_1920_XiaomiMI4LTE_1.8.3_Android19&devid=866500021200250&appname=QQHouse&mod=appkft&act=newsdetail&channel=71";
+    public static final String HOUSE_DETAIL = "index.php?guid=866500021200250&devua=appkft_1080_1920_XiaomiMI4LTE_1.8.3_Android19&devid=866500021200250&appname=QQHouse&mod=appkft&act=newsdetail&channel=71";
 
 
 }

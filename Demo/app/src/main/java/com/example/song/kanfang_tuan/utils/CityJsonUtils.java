@@ -36,11 +36,26 @@ public class CityJsonUtils {
                     JSONObject tmp = arr.getJSONObject(j);
                     //构建CityEntity
                     CityEntity city = new CityEntity(tmp, i, lettes[i]);
+                    //设置城市拼音首字母数据
+                    setCityPinYinHeadWord(city);
                     //添加到集合中
                     data.add(city);
                 }
             }
         }
         return data;
+    }
+
+
+    private static void setCityPinYinHeadWord(CityEntity bean){
+        String citypinyin = bean.getCitypinyin();
+        String[] pinyinWordArray = citypinyin.split(" ");
+        StringBuilder pinyinHeadArray = new StringBuilder();
+        for (int i=0;i<pinyinWordArray.length;i++){
+            pinyinHeadArray.append(pinyinWordArray[i].substring(0,1));
+
+        }
+        bean.setCitywordheadpinyin(pinyinHeadArray.toString());
+
     }
 }

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <!--头像-->
+        <ImageView
+            android:id="@+id/iv_comment_head_y"
+            android:padding="@dimen/dp_5"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40" />
+        <!--性别-->
+        <ImageView
+            android:layout_gravity="center"
+            android:padding="@dimen/dp_5"
+            android:id="@+id/iv_sex_y"
+            android:layout_width="@dimen/dp_30"
+            android:layout_height="@dimen/dp_30" />
+        <!--昵称-->
+        <TextView
+            android:id="@+id/tv_comment_name_y"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/sp_12"
+            android:layout_width="@dimen/dp_0"
+            android:textColor="@color/colorPrimary"
+            android:layout_height="@dimen/dp_40"
+            android:layout_weight="1" />
+        <!--点赞-->
+        <ImageView
+            android:src="@drawable/ding_not_clicked"
+            android:padding="@dimen/dp_10"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <!--不知道是啥-->
+        <TextView
+            android:id="@+id/tv_comment_tv1_y"
+            android:layout_width="@dimen/dp_40"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:background="#aaaaaaaa"
+            android:textSize="@dimen/sp_9"
+            android:padding="@dimen/dp_5"
+            android:layout_height="wrap_content" />
+        <!--评论内容-->
+        <TextView
+            android:textSize="@dimen/sp_15"
+            android:padding="@dimen/dp_5"
+            android:id="@+id/tv_comment_context_y"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+</LinearLayout>

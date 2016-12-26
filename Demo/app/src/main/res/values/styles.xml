@@ -60,6 +60,7 @@
     </style>
     <!--视频中的文字，包括播放次数，视频时间长度-->
     <style name="video_text">
+        <item name="android:textSize">@dimen/sp_12</item>
         <item name="android:textColor">@color/video_text_color</item>
     </style>
     <!--videoliseview中下面的数字-->

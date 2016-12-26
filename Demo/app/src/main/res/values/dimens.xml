@@ -47,6 +47,8 @@
     <dimen name="QRCode_inner_height">200dp</dimen>
     <dimen name="QRCode_inner_margin_top">150dp</dimen>
     <dimen name="QRCode_inner_width">200dp</dimen>
+
+    <dimen name="dp_30">30dp</dimen>
     <dimen name="dp_80">80dp</dimen>
     <dimen name="dp_60">60dp</dimen>
     <dimen name="sp_20">20sp</dimen>
@@ -60,12 +62,12 @@
     <dimen name="city_slideView_padding">10dp</dimen>
 
     <!--CityChoice_city_head-->
-    <dimen name="city_head_textSize">18sp</dimen>
+    <dimen name="city_head_textSize">15sp</dimen>
     <dimen name="city_head_layout_marginLeft">10dp</dimen>
     <dimen name="city_head_layout_marginTop">5dp</dimen>
     <dimen name="city_head_layout_marginBottom">5dp</dimen>
     <!--CityChoice_city_item-->
-    <dimen name="city_item_textSize">20sp</dimen>
+    <dimen name="city_item_textSize">16sp</dimen>
     <dimen name="city_item_layout_margin">10dp</dimen>
     <dimen name="sp_16">16sp</dimen>
 

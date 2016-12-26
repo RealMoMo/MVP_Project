@@ -7,6 +7,8 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 在SDCard中创建与删除文件权限 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
     <!-- shareSDK -->
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -73,6 +75,15 @@
         </activity>
         <activity android:name=".ui.activity.HomeSearchActivity" />
         <activity android:name=".ui.activity.HouseDetailActivity"></activity>
+
+
+        <!--微信分享回调 -->
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
