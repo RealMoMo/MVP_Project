@@ -12,9 +12,8 @@ RealMoMo
    邮箱：momo_weiye@126.com
 -------------
 ####开发目的: 
-<br>svn与git的使用</br>
-<br>学习并掌握MVP开发模式</br>
-<br>掌握第三方app登录与分享</br>
+<br>练手MVP开发模式</br>
+
 
 ###开发环境
 Android Studio2.0
