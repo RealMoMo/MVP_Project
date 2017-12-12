@@ -9,7 +9,7 @@ MVP模式不是很溜，可能应用的不够严谨！
 RealMoMo
 > 关于我，欢迎关注  
    微信：[Real_Mo]()  
-   邮箱：momo_weiye@126.com
+   邮箱：momo.weiye@gmail.com
 -------------
 ####开发目的: 
 <br>练手MVP开发模式</br>
